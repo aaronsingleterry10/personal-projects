@@ -17,6 +17,11 @@
         "#00FFFF"
     ];
 
-    let randomNumber = Math.floor(Math.random() * ((hexColorArray.length - 1) - 0 + 1));
-    console.log(randomNumber);
+    document.getElementById("bg-color-change").addEventListener("click", function () {
+        let randomNumber = Math.floor(Math.random() * ((hexColorArray.length - 1) - 0 + 1));
+
+        document.getElementsByTagName("body")[0].style.backgroundColor = `${hexColorArray[randomNumber]}`;
+        document.getElementById("bg-color-change").style.backgroundColor = `${hexColorArray[randomNumber]}`;
+        document.getElementById("hex-code").innerText = `${hexColorArray[randomNumber]}`;
+    })
 })();
