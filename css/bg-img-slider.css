@@ -15,15 +15,20 @@ body {
 }
 
 #image {
-    width: 700px;
-    height: 500px;
+    width: 900px;
+    height: 700px;
     border: 2px solid black;
+    border-radius: 10px;
 }
 
 button {
     width: 50px;
     height: 50px;
     font-size: 25px;
+    border: 2px solid lightgrey;
+    border-radius: 10px;
+    background-color: lightgrey;
+    transition: background-color 300ms;
 }
 
 #left-btn {
@@ -34,4 +39,8 @@ button {
 #right-btn {
     position: relative;
     right: 25px;
+}
+
+button:hover {
+    background-color: cornflowerblue;
 }
