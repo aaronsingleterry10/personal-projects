@@ -3,7 +3,7 @@
 }
 
 body {
-    background-color: #555C5B;
+    background-color: lightblue;
 }
 
 #container {
@@ -30,7 +30,7 @@ button {
     font-size: 25px;
     border: 2px solid lightgrey;
     border-radius: 10px;
-    background-color: lightgrey;
+    background-color: darkorchid;
     transition: background-color 300ms;
 }
 
