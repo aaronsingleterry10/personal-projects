@@ -21,6 +21,12 @@ button {
     height: 500px;
 }
 
+/*#container {*/
+/*    width: 400px;*/
+/*    height: 400px;*/
+/*    background-color: black;*/
+/*}*/
+
 .color {
     width: 175px;
     height: 175px;
@@ -32,20 +38,24 @@ button {
     /*background-color: green;*/
     /*float: left;*/
     clear: left;
+    border-top-left-radius: 175px;
 }
 
 #red {
     /*background-color: red;*/
     /*float: left;*/
+    border-top-right-radius: 175px;
 }
 
 #yellow {
     /*background-color: yellow;*/
     /*float: left;*/
     clear: left;
+    border-bottom-left-radius: 175px;
 }
 
 #blue {
     /*background-color: blue;*/
     /*float: left;*/
+    border-bottom-right-radius: 175px;
 }
