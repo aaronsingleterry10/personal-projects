@@ -118,14 +118,17 @@
                 console.log("First round success!");
             }
         });
-
-
     });
 
-
+    // Returns true or false of whether two arrays are the same
     function userVsSimonArrays(userArray, simonArray) {
         return userArray.length === simonArray.length && userArray.every((value, index) => value === simonArray[index]);
     }
 
+    function addingToArray (staticArray, dynamicArray) {
+        let randomNum = Math.floor((Math.random() * (staticArray.length - 1)));
+        dynamicArray.push(staticArray[randomNum]);
+        return dynamicArray;
+    }
 
 })();
