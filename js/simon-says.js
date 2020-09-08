@@ -51,13 +51,13 @@
     document.getElementById("green").addEventListener("mouseup", () => {
         document.getElementById("green").style.backgroundColor = "#fff";
         userColorArray.push("green");
-        if (simonColorArray[0] === userColorArray[0]) {
-            console.log("Completed round one");
-        } else {
-            console.log("Wrong color");
-        }
-        console.log(userColorArray);
-        userColorArray = [];
+        // if (simonColorArray[0] === userColorArray[0]) {
+        //     console.log("Completed round one");
+        // } else {
+        //     console.log("Wrong color");
+        // }
+        // console.log(userColorArray);
+        // userColorArray = [];
     });
 
     // Red Button
@@ -68,13 +68,13 @@
     document.getElementById("red").addEventListener("mouseup", () => {
         document.getElementById("red").style.backgroundColor = "#fff";
         userColorArray.push("red");
-        if (simonColorArray[0] === userColorArray[0]) {
-            console.log("Completed round one");
-        } else {
-            console.log("Wrong color");
-        }
-        console.log(userColorArray);
-        userColorArray = [];
+        // if (simonColorArray[0] === userColorArray[0]) {
+        //     console.log("Completed round one");
+        // } else {
+        //     console.log("Wrong color");
+        // }
+        // console.log(userColorArray);
+        // userColorArray = [];
     });
 
     // Yellow Button
@@ -84,7 +84,7 @@
 
     document.getElementById("yellow").addEventListener("mouseup", () => {
         document.getElementById("yellow").style.backgroundColor = "#fff";
-        // userColorArray.push("green");
+        userColorArray.push("yellow");
         // if (simonColorArray[0] === userColorArray[0]) {
         //     console.log("Completed round one");
         // }
@@ -97,10 +97,16 @@
 
     document.getElementById("blue").addEventListener("mouseup", () => {
         document.getElementById("blue").style.backgroundColor = "#fff";
-        // userColorArray.push("green");
+        userColorArray.push("blue");
         // if (simonColorArray[0] === userColorArray[0]) {
         //     console.log("Completed round one");
         // }
     });
+
+
+    function userVsSimonArrays(userArray, simonArray) {
+        return userArray.length === simonArray.length && userArray.every((value, index) => value === simonArray[index]);
+    }
+
 
 })();
