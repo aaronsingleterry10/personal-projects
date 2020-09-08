@@ -3,7 +3,7 @@
     console.log("hello from simon");
 
     let simonColorArray = [];
-    let exampleArray = ["blue", "green", "red"];
+    let exampleArray = ["blue", "green", "red", "green", "green"];
     let simonColors = ["green", "red", "yellow", "blue"];
 
     document.getElementById("start").addEventListener("click", () => {
@@ -28,18 +28,30 @@
 
         let timeInterval = setInterval(() => {
             if (newCount >= newMax) {
-                document.getElementById(exampleArray[newCount - 1]).style.backgroundColor = "#fff";
+                // document.getElementById(exampleArray[newCount - 1]).style.backgroundColor = "#fff";
                 clearInterval(timeInterval);
                 // console.log("All done");
             } else {
-                // count++;
-                document.getElementById(exampleArray[newCount]).style.backgroundColor = exampleArray[newCount];
-                // simonColorArray.push("green");
-                if (newCount > 0) {
-                    document.getElementById(exampleArray[newCount - 1]).style.backgroundColor = "#fff";
-                }
-            }
+                // // count++;
+                // document.getElementById(exampleArray[newCount]).style.backgroundColor = exampleArray[newCount];
+                // // simonColorArray.push("green");
+                // if (newCount > 0) {
+                //     document.getElementById(exampleArray[newCount - 1]).style.backgroundColor = "#fff";
+                // }
+                let myCount = 0;
+                let myMax = 1;
+                let nestedInterval = setInterval(() => {
+                    if (myCount >= myMax) {
+                        document.getElementById(exampleArray[newCount - 1]).style.backgroundColor = "#fff";
+                        clearInterval(nestedInterval);
+                    } else {
+                        myCount++;
+                        console.log(newCount - 1);
+                        document.getElementById(exampleArray[newCount - 1]).style.backgroundColor = exampleArray[newCount - 1];
+                    }
+                }, 300);
             newCount++;
+            }
         }, interval);
 
         // Green Button
