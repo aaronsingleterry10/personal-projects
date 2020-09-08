@@ -8,19 +8,37 @@
     document.getElementById("start").addEventListener("click", () => {
         let count = 0;
         let max = 1;
-        let interval = 300;
+        let interval = 500;
+        let newCount = 0;
+        let exampleArray = ["blue", "green", "red"];
+        let newMax = exampleArray.length;
+
+        // let timeInterval = setInterval(() => {
+        //     if (count >= max) {
+        //         clearInterval(timeInterval);
+        //         console.log("All done");
+        //         document.getElementById("green").style.backgroundColor = "#fff";
+        //     } else {
+        //         count++;
+        //         document.getElementById("green").style.backgroundColor = "green";
+        //         simonColorArray.push("green");
+        //     }
+        // }, interval);
 
         let timeInterval = setInterval(() => {
-            if (count >= max) {
+            if (newCount >= newMax) {
                 clearInterval(timeInterval);
-                console.log("All done");
-                document.getElementById("green").style.backgroundColor = "#fff";
+                // console.log("All done");
+                document.getElementById(exampleArray[newCount]).style.backgroundColor = "#fff";
             } else {
-                count++;
-                document.getElementById("green").style.backgroundColor = "green";
-                simonColorArray.push("green");
+                // count++;
+                document.getElementById(exampleArray[newCount]).style.backgroundColor = exampleArray[newCount];
+                // simonColorArray.push("green");
             }
+                document.getElementById(exampleArray[newCount - 1]).style.backgroundColor = "#fff";
+            newCount++;
         }, interval);
+
     });
 
     // Green Button
@@ -36,6 +54,8 @@
        } else {
            console.log("Wrong color");
        }
+       console.log(userColorArray);
+       userColorArray = [];
     });
 
     // Red Button
@@ -51,6 +71,8 @@
         } else {
             console.log("Wrong color");
         }
+        console.log(userColorArray);
+        userColorArray = [];
     });
 
     // Yellow Button
