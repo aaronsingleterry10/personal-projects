@@ -8,7 +8,7 @@
     document.getElementById("start").addEventListener("click", () => {
         let count = 0;
         let max = 1;
-        let interval = 500;
+        let interval = 700;
         let newCount = 0;
         let exampleArray = ["blue", "green", "red"];
         let newMax = exampleArray.length;
@@ -27,15 +27,17 @@
 
         let timeInterval = setInterval(() => {
             if (newCount >= newMax) {
+                document.getElementById(exampleArray[newCount - 1]).style.backgroundColor = "#fff";
                 clearInterval(timeInterval);
                 // console.log("All done");
-                document.getElementById(exampleArray[newCount]).style.backgroundColor = "#fff";
             } else {
                 // count++;
                 document.getElementById(exampleArray[newCount]).style.backgroundColor = exampleArray[newCount];
                 // simonColorArray.push("green");
+                if (newCount > 0) {
+                    document.getElementById(exampleArray[newCount - 1]).style.backgroundColor = "#fff";
+                }
             }
-                document.getElementById(exampleArray[newCount - 1]).style.backgroundColor = "#fff";
             newCount++;
         }, interval);
 
@@ -47,15 +49,15 @@
     });
 
     document.getElementById("green").addEventListener("mouseup", () => {
-       document.getElementById("green").style.backgroundColor = "#fff" ;
-       userColorArray.push("green");
-       if (simonColorArray[0] === userColorArray[0]) {
-           console.log("Completed round one");
-       } else {
-           console.log("Wrong color");
-       }
-       console.log(userColorArray);
-       userColorArray = [];
+        document.getElementById("green").style.backgroundColor = "#fff";
+        userColorArray.push("green");
+        if (simonColorArray[0] === userColorArray[0]) {
+            console.log("Completed round one");
+        } else {
+            console.log("Wrong color");
+        }
+        console.log(userColorArray);
+        userColorArray = [];
     });
 
     // Red Button
@@ -64,7 +66,7 @@
     });
 
     document.getElementById("red").addEventListener("mouseup", () => {
-        document.getElementById("red").style.backgroundColor = "#fff" ;
+        document.getElementById("red").style.backgroundColor = "#fff";
         userColorArray.push("red");
         if (simonColorArray[0] === userColorArray[0]) {
             console.log("Completed round one");
@@ -81,7 +83,7 @@
     });
 
     document.getElementById("yellow").addEventListener("mouseup", () => {
-        document.getElementById("yellow").style.backgroundColor = "#fff" ;
+        document.getElementById("yellow").style.backgroundColor = "#fff";
         // userColorArray.push("green");
         // if (simonColorArray[0] === userColorArray[0]) {
         //     console.log("Completed round one");
@@ -94,7 +96,7 @@
     });
 
     document.getElementById("blue").addEventListener("mouseup", () => {
-        document.getElementById("blue").style.backgroundColor = "#fff" ;
+        document.getElementById("blue").style.backgroundColor = "#fff";
         // userColorArray.push("green");
         // if (simonColorArray[0] === userColorArray[0]) {
         //     console.log("Completed round one");
