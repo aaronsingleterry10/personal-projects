@@ -1,13 +1,9 @@
 "use strict";
 (function () {
-    console.log("hello from simon");
-
     // let simonColorArray = [];
     let colors = ["green", "red", "yellow", "blue"];
     let simonColors = ["green"];
-
     let count = 0;
-    let max = 1;
     let userColorArray = [];
     let interval = 700;
     let newCount = 0;
@@ -116,8 +112,10 @@
     function startSimonGame() {
         let timeInterval = setInterval(() => {
             if (newCount >= newMax) {
+                document.getElementById("turn").innerText = "Your turn";
                 clearInterval(timeInterval);
             } else {
+                document.getElementById("turn").innerText = "Simon's turn";
                 let myCount = 0;
                 let myMax = 1;
                 let nestedInterval = setInterval(() => {
@@ -154,6 +152,7 @@
             count += 1;
         } else {
             document.getElementById("container").innerHTML = "<h2>WRONG</h2>"
+            document.getElementById("start-button").innerHTML = "<button onclick='location.reload();'>Click to try again</button>"
             console.log("wrong, try again");
             count = 0;
         }
