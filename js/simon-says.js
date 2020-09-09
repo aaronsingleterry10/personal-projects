@@ -6,56 +6,15 @@
     let colors = ["green", "red", "yellow", "blue"];
     let simonColors = ["green"];
 
-        let count = 0;
-        let max = 1;
-        let userColorArray = [];
-        let interval = 700;
-        let newCount = 0;
-        let newMax = simonColors.length;
+    let count = 0;
+    let max = 1;
+    let userColorArray = [];
+    let interval = 700;
+    let newCount = 0;
+    let newMax = simonColors.length;
     document.getElementById("start").addEventListener("click", () => {
-        // let timeInterval = setInterval(() => {
-        //     if (count >= max) {
-        //         clearInterval(timeInterval);
-        //         console.log("All done");
-        //         document.getElementById("green").style.backgroundColor = "#fff";
-        //     } else {
-        //         count++;
-        //         document.getElementById("green").style.backgroundColor = "green";
-        //         simonColorArray.push("green");
-        //     }
-        // }, interval);
         let round = 1;
         document.getElementById("round").innerText = "Round: " + round;
-        // let timeInterval = setInterval(() => {
-        //     if (newCount >= newMax) {
-        //         // document.getElementById(exampleArray[newCount - 1]).style.backgroundColor = "#fff";
-        //         clearInterval(timeInterval);
-        //         // console.log("All done");
-        //     } else {
-        //         // // count++;
-        //         // document.getElementById(exampleArray[newCount]).style.backgroundColor = exampleArray[newCount];
-        //         // // simonColorArray.push("green");
-        //         // if (newCount > 0) {
-        //         //     document.getElementById(exampleArray[newCount - 1]).style.backgroundColor = "#fff";
-        //         // }
-        //         let myCount = 0;
-        //         let myMax = 1;
-        //         let nestedInterval = setInterval(() => {
-        //             if (myCount >= myMax) {
-        //                 document.getElementById(simonColors[newCount - 1]).style.backgroundColor = "#fff";
-        //                 clearInterval(nestedInterval);
-        //             } else {
-        //                 myCount++;
-        //                 console.log(newCount - 1);
-        //                 document.getElementById(simonColors[newCount - 1]).style.backgroundColor = simonColors[newCount - 1];
-        //             }
-        //         }, 300);
-        //     }
-        //     if (userVsSimonArrays(userColorArray, simonColors)) {
-        //         console.log("Testing 123");
-        //     }
-        //     newCount++;
-        // }, interval);
         startSimonGame();
         // Green Button
         document.getElementById("green").addEventListener("mousedown", () => {
@@ -65,22 +24,17 @@
         document.getElementById("green").addEventListener("mouseup", () => {
             document.getElementById("green").style.backgroundColor = "#fff";
             userColorArray.push("green");
-            // if (simonColorArray[0] === userColorArray[0]) {
-            //     console.log("Completed round one");
-            // } else {
-            //     console.log("Wrong color");
-            // }
-            // console.log(userColorArray);
-            // userColorArray = [];
             console.log("user: ", userColorArray);
             console.log("simon: ", simonColors);
+            compareUserInputVsSimon(userColorArray, simonColors);
             if (userVsSimonArrays(userColorArray, simonColors)) {
-                console.log("First round success!");
+                console.log("Success!");
                 addingToArray(colors, simonColors);
                 newCount = 0;
                 newMax = simonColors.length;
                 userColorArray = [];
                 round += 1;
+                count = 0;
                 document.getElementById("round").innerText = "Round: " + round;
                 startSimonGame();
             }
@@ -94,15 +48,9 @@
         document.getElementById("red").addEventListener("mouseup", () => {
             document.getElementById("red").style.backgroundColor = "#fff";
             userColorArray.push("red");
-            // if (simonColorArray[0] === userColorArray[0]) {
-            //     console.log("Completed round one");
-            // } else {
-            //     console.log("Wrong color");
-            // }
-            // console.log(userColorArray);
-            // userColorArray = [];
             console.log("user: ", userColorArray);
             console.log("simon: ", simonColors);
+            compareUserInputVsSimon(userColorArray, simonColors);
             if (userVsSimonArrays(userColorArray, simonColors)) {
                 console.log("First round success!");
                 addingToArray(colors, simonColors);
@@ -110,6 +58,7 @@
                 newMax = simonColors.length;
                 userColorArray = [];
                 round += 1;
+                count = 0;
                 document.getElementById("round").innerText = "Round: " + round;
                 startSimonGame();
             }
@@ -123,11 +72,9 @@
         document.getElementById("yellow").addEventListener("mouseup", () => {
             document.getElementById("yellow").style.backgroundColor = "#fff";
             userColorArray.push("yellow");
-            // if (simonColorArray[0] === userColorArray[0]) {
-            //     console.log("Completed round one");
-            // }
             console.log("user: ", userColorArray);
             console.log("simon: ", simonColors);
+            compareUserInputVsSimon(userColorArray, simonColors);
             if (userVsSimonArrays(userColorArray, simonColors)) {
                 console.log("First round success!");
                 addingToArray(colors, simonColors);
@@ -135,6 +82,7 @@
                 newMax = simonColors.length;
                 userColorArray = [];
                 round += 1;
+                count = 0;
                 document.getElementById("round").innerText = "Round: " + round;
                 startSimonGame();
             }
@@ -148,11 +96,9 @@
         document.getElementById("blue").addEventListener("mouseup", () => {
             document.getElementById("blue").style.backgroundColor = "#fff";
             userColorArray.push("blue");
-            // if (simonColorArray[0] === userColorArray[0]) {
-            //     console.log("Completed round one");
-            // }
             console.log("user: ", userColorArray);
             console.log("simon: ", simonColors);
+            compareUserInputVsSimon(userColorArray, simonColors);
             if (userVsSimonArrays(userColorArray, simonColors)) {
                 console.log("First round success!");
                 addingToArray(colors, simonColors);
@@ -160,6 +106,7 @@
                 newMax = simonColors.length;
                 userColorArray = [];
                 round += 1;
+                count = 0;
                 document.getElementById("round").innerText = "Round: " + round;
                 startSimonGame();
             }
@@ -169,16 +116,8 @@
     function startSimonGame() {
         let timeInterval = setInterval(() => {
             if (newCount >= newMax) {
-                // document.getElementById(exampleArray[newCount - 1]).style.backgroundColor = "#fff";
                 clearInterval(timeInterval);
-                // console.log("All done");
             } else {
-                // // count++;
-                // document.getElementById(exampleArray[newCount]).style.backgroundColor = exampleArray[newCount];
-                // // simonColorArray.push("green");
-                // if (newCount > 0) {
-                //     document.getElementById(exampleArray[newCount - 1]).style.backgroundColor = "#fff";
-                // }
                 let myCount = 0;
                 let myMax = 1;
                 let nestedInterval = setInterval(() => {
@@ -201,9 +140,22 @@
         return userArray.length === simonArray.length && userArray.every((value, index) => value === simonArray[index]);
     }
 
-    function addingToArray (staticArray, dynamicArray) {
+    function addingToArray(staticArray, dynamicArray) {
         let randomNum = Math.floor((Math.random() * (staticArray.length - 1)));
         dynamicArray.push(staticArray[randomNum]);
         return dynamicArray;
+    }
+
+    function compareUserInputVsSimon(userArray, simonArray) {
+        console.log(count);
+        console.log(userArray[count], simonArray[count])
+        if (userArray[count] === simonArray[count]) {
+            console.log("so far so good");
+            count += 1;
+        } else {
+            document.getElementById("container").innerHTML = "<h2>WRONG</h2>"
+            console.log("wrong, try again");
+            count = 0;
+        }
     }
 })();
