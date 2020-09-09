@@ -12,7 +12,7 @@ h2 {
 
 h3 {
     text-align: center;
-    margin-top: 1em;
+    /*margin-top: 1em;*/
 }
 
 button {
@@ -28,7 +28,7 @@ button {
     justify-content: center;
     margin: auto;
     width: 450px;
-    height: 600px;
+    height: 450px;
 }
 
 #container {
