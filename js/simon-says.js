@@ -3,7 +3,7 @@
     console.log("hello from simon");
 
     // let simonColorArray = [];
-    // let exampleArray = ["blue", "green", "red", "green", "green"];
+    let colors = ["green", "red", "yellow", "blue"];
     let simonColors = ["green"];
 
         let count = 0;
@@ -13,7 +13,6 @@
         let newCount = 0;
         let newMax = simonColors.length;
     document.getElementById("start").addEventListener("click", () => {
-
         // let timeInterval = setInterval(() => {
         //     if (count >= max) {
         //         clearInterval(timeInterval);
@@ -25,7 +24,8 @@
         //         simonColorArray.push("green");
         //     }
         // }, interval);
-
+        let round = 1;
+        document.getElementById("round").innerText = "Round: " + round;
         // let timeInterval = setInterval(() => {
         //     if (newCount >= newMax) {
         //         // document.getElementById(exampleArray[newCount - 1]).style.backgroundColor = "#fff";
@@ -56,7 +56,6 @@
         //     }
         //     newCount++;
         // }, interval);
-
         startSimonGame();
         // Green Button
         document.getElementById("green").addEventListener("mousedown", () => {
@@ -73,9 +72,17 @@
             // }
             // console.log(userColorArray);
             // userColorArray = [];
-
+            console.log("user: ", userColorArray);
+            console.log("simon: ", simonColors);
             if (userVsSimonArrays(userColorArray, simonColors)) {
                 console.log("First round success!");
+                addingToArray(colors, simonColors);
+                newCount = 0;
+                newMax = simonColors.length;
+                userColorArray = [];
+                round += 1;
+                document.getElementById("round").innerText = "Round: " + round;
+                startSimonGame();
             }
         });
 
@@ -94,10 +101,17 @@
             // }
             // console.log(userColorArray);
             // userColorArray = [];
-            console.log(userColorArray);
-
+            console.log("user: ", userColorArray);
+            console.log("simon: ", simonColors);
             if (userVsSimonArrays(userColorArray, simonColors)) {
                 console.log("First round success!");
+                addingToArray(colors, simonColors);
+                newCount = 0;
+                newMax = simonColors.length;
+                userColorArray = [];
+                round += 1;
+                document.getElementById("round").innerText = "Round: " + round;
+                startSimonGame();
             }
         });
 
@@ -112,9 +126,17 @@
             // if (simonColorArray[0] === userColorArray[0]) {
             //     console.log("Completed round one");
             // }
-
+            console.log("user: ", userColorArray);
+            console.log("simon: ", simonColors);
             if (userVsSimonArrays(userColorArray, simonColors)) {
                 console.log("First round success!");
+                addingToArray(colors, simonColors);
+                newCount = 0;
+                newMax = simonColors.length;
+                userColorArray = [];
+                round += 1;
+                document.getElementById("round").innerText = "Round: " + round;
+                startSimonGame();
             }
         });
 
@@ -129,9 +151,17 @@
             // if (simonColorArray[0] === userColorArray[0]) {
             //     console.log("Completed round one");
             // }
-
+            console.log("user: ", userColorArray);
+            console.log("simon: ", simonColors);
             if (userVsSimonArrays(userColorArray, simonColors)) {
                 console.log("First round success!");
+                addingToArray(colors, simonColors);
+                newCount = 0;
+                newMax = simonColors.length;
+                userColorArray = [];
+                round += 1;
+                document.getElementById("round").innerText = "Round: " + round;
+                startSimonGame();
             }
         });
     });
