@@ -40,22 +40,23 @@ button {
     height: 175px;
     border: 1px solid black;
     float: left;
+    margin: 8px;
 }
 
 #green {
     clear: left;
-    border-top-left-radius: 175px;
+    border-radius: 175px 10px 10px 10px;
 }
 
 #red {
-    border-top-right-radius: 175px;
+    border-radius: 10px 175px 10px 10px;
 }
 
 #yellow {
     clear: left;
-    border-bottom-left-radius: 175px;
+    border-radius: 10px 10px 10px 175px;
 }
 
 #blue {
-    border-bottom-right-radius: 175px;
+    border-radius: 10px 10px 175px 10px;
 }
