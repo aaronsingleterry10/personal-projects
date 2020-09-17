@@ -18,7 +18,7 @@
         });
 
         document.getElementById("green").addEventListener("mouseup", () => {
-            document.getElementById("green").style.backgroundColor = "#fff";
+            document.getElementById("green").style.backgroundColor = "lightgreen";
             userColorArray.push("green");
             console.log("user: ", userColorArray);
             console.log("simon: ", simonColors);
@@ -42,7 +42,7 @@
         });
 
         document.getElementById("red").addEventListener("mouseup", () => {
-            document.getElementById("red").style.backgroundColor = "#fff";
+            document.getElementById("red").style.backgroundColor = "lightcoral";
             userColorArray.push("red");
             console.log("user: ", userColorArray);
             console.log("simon: ", simonColors);
@@ -66,7 +66,7 @@
         });
 
         document.getElementById("yellow").addEventListener("mouseup", () => {
-            document.getElementById("yellow").style.backgroundColor = "#fff";
+            document.getElementById("yellow").style.backgroundColor = "lightyellow";
             userColorArray.push("yellow");
             console.log("user: ", userColorArray);
             console.log("simon: ", simonColors);
@@ -90,7 +90,7 @@
         });
 
         document.getElementById("blue").addEventListener("mouseup", () => {
-            document.getElementById("blue").style.backgroundColor = "#fff";
+            document.getElementById("blue").style.backgroundColor = "lightblue";
             userColorArray.push("blue");
             console.log("user: ", userColorArray);
             console.log("simon: ", simonColors);
@@ -120,8 +120,12 @@
                 let myMax = 1;
                 let nestedInterval = setInterval(() => {
                     if (myCount >= myMax) {
-                        document.getElementById(simonColors[newCount - 1]).style.backgroundColor = "#fff";
-                        clearInterval(nestedInterval);
+                        if (simonColors[newCount - 1] === "red") {
+                            document.getElementById("red").style.backgroundColor = "lightcoral";
+                        } else {
+                            document.getElementById(simonColors[newCount - 1]).style.backgroundColor = "light" + simonColors[newCount - 1];
+                            clearInterval(nestedInterval);
+                        }
                     } else {
                         myCount++;
                         console.log(newCount - 1);
