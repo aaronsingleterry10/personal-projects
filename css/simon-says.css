@@ -6,6 +6,13 @@ body {
     background-color: aliceblue;
 }
 
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 h2 {
     /*text-align: center;*/
 }
@@ -15,10 +22,19 @@ h3 {
     /*margin-top: 1em;*/
 }
 
-button {
+#start {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #262124;
+    font-family: 'Play', sans-serif;
+    font-size: 28px;
+    color: #EBF0D7;
     margin-top: 1em;
     /*margin-left: 10em;*/
-    width: 100px;
+    width: 250px;
+    height: 75px;
+    border: none;
 }
 
 #wrapper {
@@ -39,6 +55,10 @@ button {
     width: 470px;
     height: 470px;
     border-radius: 235px;
+}
+
+#simon {
+    position: absolute;
 }
 
 .color {
@@ -80,4 +100,16 @@ button {
     position: relative;
     top: 6em;
     left: 6.2em;
+}
+
+#turn, #round {
+    font-family: 'Play', sans-serif;
+    font-size: 40px;
+    height: 45px;
+}
+
+#wrong {
+    color: #EBF0D7;
+    font-family: 'Play', sans-serif;
+    font-size: 60px;
 }
