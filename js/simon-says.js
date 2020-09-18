@@ -1,7 +1,7 @@
 "use strict";
 (function () {
     // let simonColorArray = [];
-    let colors = ["green", "red", "yellow", "blue"];
+    let colors = ["green", "red", "blue", "yellow"];
     let simonColors = ["green"];
     let count = 0;
     let userColorArray = [];
@@ -107,6 +107,7 @@
                 startSimonGame();
             }
         });
+        document.getElementById("start").remove();
     });
 
     function startSimonGame() {
@@ -155,8 +156,8 @@
             console.log("so far so good");
             count += 1;
         } else {
-            document.getElementById("container").innerHTML = "<h2>WRONG</h2>"
-            document.getElementById("start-button").innerHTML = "<button onclick='location.reload();'>Click to try again</button>"
+            document.getElementById("container").innerHTML = "<div id='wrong'>WRONG</div>"
+            document.getElementById("start-button").innerHTML = "<div id='start' onclick='location.reload();'>Click to try again</div>"
             console.log("wrong, try again");
             count = 0;
         }
