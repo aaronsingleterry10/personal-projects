@@ -5,6 +5,10 @@
     <title>Title</title>
 </head>
 <body>
-
+{%person where:'Id == 16 || Id == 17 || Id == 15 || Id == 14'%}
+{% for person in personItems %}
+{{ person.FullName }} {{person.BaptismDate}} {{person.PhoneNumbers}} {{person.Email}} {{person.PrimaryAlias}}<br>
+{% endfor %}
+{%endperson%}
 </body>
 </html>
