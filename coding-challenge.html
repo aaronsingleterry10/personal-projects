@@ -12,42 +12,34 @@
 {%endperson%}
 
 <table class="table">
-    <thead class="thead-dark">
+    <thead>
     <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Cell Phone #</th>
-        <th scope="col">Email Address</th>
-        <th scope="col">Family Address</th>
-        <th scope="col">Baptism Date</th>
+        <th>First</th>
+        <th>Last</th>
+        <th>Cell Phone #</th>
+        <th>Email Address</th>
+        <th>Family Address</th>
+        <th>Baptism Date</th>
     </tr>
     </thead>
     <tbody>
+    {%person ids:'16, 17, 15, 14'%}
+    {% for person in personItems %}
+    {% assign number =  {{person | PhoneNumber:'Mobile'}}%}
     <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
+        <td>{{person.FirstName}}</td>
+        <td>{{person.LastName}}</td>
+        {% if number == null %}
+        <td>N/A</td>
+        {% else %}
+        <td>{{number}}</td>
+        {% endif %}
+        <td>{{person.Email}}</td>
+        <td><a href="https://maps.google.com/?q={{person | Address:'Home'}}" target="_blank">{{person | Address:'Home'}}</a></td>
+        <td>{{person.BaptismDate}}</td>
     </tr>
-    <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-    </tr>
-    <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-    </tr>
-    <tr>
-        <th scope="row">4</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-    </tr>
+    {% endfor %}
+    {%endperson%}
     </tbody>
 </table>
 
