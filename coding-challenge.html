@@ -50,5 +50,15 @@
     </tr>
     </tbody>
 </table>
+
+<!--sql below-->
+-- SELECT [Person].FirstName AS 'First Name', [Person].LastName AS 'Last Name', PhoneNumber.NumberFormatted, [Person].Email AS 'Email', [Location].Street1 AS 'Family Address'
+-- FROM [Location]
+-- JOIN [GroupLocation] ON [Location].Id = [GroupLocation].LocationId
+-- JOIN [Group] ON [GroupLocation].GroupId = [Group].Id
+-- JOIN [GroupMember] ON [Group].Id = [GroupMember].GroupId
+-- JOIN [Person] ON [GroupMember].PersonId = [Person].Id
+-- left JOIN [PhoneNumber] ON [PhoneNumber].PersonId = [Person].Id
+-- WHERE [Group].Name = 'Marble Family' OR [Group].Name = 'Lowe Family';
 </body>
 </html>
