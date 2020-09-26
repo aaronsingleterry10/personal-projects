@@ -19,5 +19,9 @@
         } else {
             document.getElementById("seconds").innerText = "" + d.getSeconds();
         }
+
+        if (d.getHours() < 12) {
+            document.querySelector("body").style.backgroundImage =
+        }
     }, 1000);
 })();
