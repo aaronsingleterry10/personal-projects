@@ -4,6 +4,7 @@
 
     setInterval(() => {
         let d = new Date();
+        let hour = d.getHours();
         if (d.getHours() < 10) {
             document.getElementById("hours").innerText = "0" + d.getHours() - 12 + " : ";
         } else {
@@ -19,9 +20,15 @@
         } else {
             document.getElementById("seconds").innerText = "" + d.getSeconds();
         }
-
-        // if (d.getHours() < 12) {
-        //     document.querySelector("body").style.backgroundImage = ""
-        // }
+        if (hour <= 16 || hour >= 11) {
+            document.body.style.backgroundImage = "url('img/afternoon.jpg')";
+        }
+        if (hour >= 21 || hour <= 5) {
+            document.body.style.backgroundImage = "url('img/night.jpg')"
+        }
     }, 1000);
+
+    // let d = new Date();
+
+
 })();
