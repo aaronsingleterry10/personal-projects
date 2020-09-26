@@ -20,9 +20,15 @@
         } else {
             document.getElementById("seconds").innerText = "" + d.getSeconds();
         }
+        //morning
+        if (hour <= 10 || hour >= 6) {
+            document.body.style.backgroundImage = "url('img/morning.jpg')";
+        }
+        //daytime
         if (hour <= 16 || hour >= 11) {
             document.body.style.backgroundImage = "url('img/afternoon.jpg')";
         }
+        //night time
         if (hour >= 21 || hour <= 5) {
             document.body.style.backgroundImage = "url('img/night.jpg')"
         }
