@@ -1,26 +1,16 @@
 $(document).ready(() => {
-    const myList = "data/list.json";
+    const myList = "json/list.json";
 
     function showData() {
-        fetch(myList)
+        fetch("http://localhost:3000/todo")
             .then(response => response.json())
             .then(data => {
-                console.log(data.todo.length)
-                $(data.todo).each(function (index, element) {
+                console.log(data)
+                $(data).each(function (index, element) {
                     $('#todo').append(`<h1>${element.title}</h1>`);
                     $('#todo').append(`<p>${element.description}</p>`);
                 });
             });
-        // fetch(myList)
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         console.log(data.books.length);
-        //         $(data.books).each((index, element) => {
-        //             console.log(element.title);
-        //             console.log(element.author);
-        //
-        //         })
-        //     })
     }
 
     showData();
@@ -45,7 +35,7 @@ $(document).ready(() => {
         //         description: descriptionInput
         //     })
         // };
-        fetch("data/list.json", {
+        fetch("http://localhost:3000/todo", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json; charset=UTF-8"
@@ -58,6 +48,10 @@ $(document).ready(() => {
             .then(response => response.json())
             .then(data => {
                 console.log(data)
+                $(data).each(function (index, element) {
+                    $('#todo').append(`<h1>${element.title}</h1>`);
+                    $('#todo').append(`<p>${element.description}</p>`);
+                });
             });
 
     });
