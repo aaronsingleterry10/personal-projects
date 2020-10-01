@@ -156,7 +156,7 @@
             console.log("so far so good");
             count += 1;
         } else {
-            document.getElementById("container").innerHTML = "<div id='wrong'>WRONG</div>"
+            document.getElementById("wrapper").innerHTML = "<div id='wrong' style='color: #262124'>WRONG!!</div>"
             document.getElementById("start-button").innerHTML = "<div id='start' onclick='location.reload();'>Click to try again</div>"
             console.log("wrong, try again");
             count = 0;
