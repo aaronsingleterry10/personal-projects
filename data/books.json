@@ -1,0 +1,18 @@
+{
+  "books": [
+    {
+      "title": "The Name of the Wind",
+      "author": "Patrick Rothfuss",
+      "coverImage": "https://images-na.ssl-images-amazon.com/images/I/91b8oNwaV1L.jpg",
+      "description": "Also called The Kingkiller Chronicle: Day One, is a fantasy novel written by American author Patrick Rothfuss. It is the first book in a series called The Kingkiller Chronicle and followed by The Wise Man's Fear.",
+      "id": 1
+    },
+    {
+      "title": "Harry Potter and the Sorcerer's Stone",
+      "author": "J.K. Rowling",
+      "coverImage": "https://m.media-amazon.com/images/I/413lxIe20jL.jpg",
+      "description": "A global phenomenon and cornerstone of contemporary children’s literature, J.K. Rowling’s Harry Potter series is both universally adored and critically acclaimed. Now, experience the magic as you’ve never heard it before.",
+      "id": 2
+    }
+  ]
+}
