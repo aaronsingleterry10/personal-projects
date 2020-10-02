@@ -1,8 +1,8 @@
 {
   "todo": [
     {
-      "title": "My Tile",
-      "description": "My Description",
+      "title": "My Title (updated)",
+      "description": "My Description (updated)",
       "id": 1
     },
     {
@@ -14,11 +14,6 @@
       "title": "blah",
       "description": "updateblah blah",
       "id": 3
-    },
-    {
-      "title": "new title",
-      "description": "new description",
-      "id": 4
     }
   ]
 }
