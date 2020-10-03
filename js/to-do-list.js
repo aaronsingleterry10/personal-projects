@@ -18,6 +18,55 @@ $(document).ready(() => {
             });
     }
 
+    function createTask() {
+        $("#task-form").html(`
+            <form>
+                <div class="form-group">
+                    <label for="title">Title:</label>
+                    <input type="text" class="form-control" id="title" name="title">
+                </div>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <input type="text" class="form-control" id="description" name="description">
+                </div>
+                <input type="submit" value="Submit" id="send">
+            </form>
+        `);
+
+        $("#send").click((e) => {
+            e.preventDefault();
+            console.log(e.target);
+            let titleInput = $("#title").val();
+            let descriptionInput = $("#description").val();
+            console.log(titleInput, descriptionInput)
+            fetch(todoUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json; charset=UTF-8"
+                },
+                body: JSON.stringify({
+                    title: titleInput,
+                    description: descriptionInput
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    $("#title").val("");
+                    $("#description").val("");
+                    $(data).each(function (index, element) {
+                        $('#todo').append(`
+                        <div id="${element.id}">
+                            <h3>${element.title}</h3>
+                            <p>${element.description}</p>
+                            <button data-id="${element.id}" data-action="edit">Edit</button>
+                            <button data-id="${element.id}" data-action="delete">Delete</button>
+                        </div>
+                    `);
+                    });
+                });
+        });
+    }
+
     function editData(url, title, description, id) {
         fetch(`${url}/${id}`, {
             method: "PUT",
@@ -41,36 +90,43 @@ $(document).ready(() => {
 
     showData(todoUrl);
 
-    $("#send").click((e) => {
-        e.preventDefault();
-        let titleInput = $("#title").val();
-        let descriptionInput = $("#description").val();
-        fetch(todoUrl, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json; charset=UTF-8"
-            },
-            body: JSON.stringify({
-                title: titleInput,
-                description: descriptionInput
-            })
-        })
-            .then(response => response.json())
-            .then(data => {
-                $("#title").val("");
-                $("#description").val("");
-                $(data).each(function (index, element) {
-                    $('#todo').append(`
-                        <div id="${element.id}">
-                            <h3>${element.title}</h3>
-                            <p>${element.description}</p>
-                            <button data-id="${element.id}" data-action="edit">Edit</button>
-                            <button data-id="${element.id}" data-action="delete">Delete</button>
-                        </div>
-                    `);
-                });
-            });
+    $("#create-task").click((e) => {
+        // e.preventDefault()
+        createTask();
     });
+
+    // $("#send").click((e) => {
+    //     e.preventDefault();
+    //     console.log(e.target);
+    //     let titleInput = $("#title").val();
+    //     let descriptionInput = $("#description").val();
+    //     console.log(titleInput, descriptionInput)
+    //     fetch(todoUrl, {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json; charset=UTF-8"
+    //         },
+    //         body: JSON.stringify({
+    //             title: titleInput,
+    //             description: descriptionInput
+    //         })
+    //     })
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             $("#title").val("");
+    //             $("#description").val("");
+    //             $(data).each(function (index, element) {
+    //                 $('#todo').append(`
+    //                     <div id="${element.id}">
+    //                         <h3>${element.title}</h3>
+    //                         <p>${element.description}</p>
+    //                         <button data-id="${element.id}" data-action="edit">Edit</button>
+    //                         <button data-id="${element.id}" data-action="delete">Delete</button>
+    //                     </div>
+    //                 `);
+    //             });
+    //         });
+    // });
 
     $("#todo").click((e) => {
         e.preventDefault();
