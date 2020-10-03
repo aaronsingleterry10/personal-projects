@@ -1,19 +1,14 @@
 {
   "todo": [
     {
-      "title": "My Title (updated)",
-      "description": "My Description (updated)",
+      "title": "My Title ",
+      "description": "My Description",
       "id": 1
     },
     {
-      "title": "My Second Title",
-      "description": "My Second Description",
+      "title": "My Second Title (updated)",
+      "description": "My Second Description (updated)",
       "id": 2
-    },
-    {
-      "title": "blah",
-      "description": "updateblah blah",
-      "id": 3
     }
   ]
 }
