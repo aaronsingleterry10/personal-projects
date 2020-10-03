@@ -8,8 +8,7 @@ $(document).ready(() => {
                 $(data).each(function (index, element) {
                     $('#todo').append(`
                         <div id="${element.id}">
-                            <h3>${element.title}</h3>
-                            <p>${element.description}</p>
+                            <h3>${element.task}</h3>
                             <button data-id="${element.id}" data-action="edit">Edit</button>
                             <button data-id="${element.id}" data-action="delete">Delete</button>
                         </div>
@@ -20,14 +19,11 @@ $(document).ready(() => {
 
     function createTask() {
         $("#task-form").html(`
+            <h3>Add a new To Do</h3>
             <form>
                 <div class="form-group">
-                    <label for="title">Title:</label>
-                    <input type="text" class="form-control" id="title" name="title">
-                </div>
-                <div class="form-group">
-                    <label for="description">Description:</label>
-                    <input type="text" class="form-control" id="description" name="description">
+                    <label for="task">Task</label>
+                    <input type="text" class="form-control" id="task" name="task">
                 </div>
                 <input type="submit" value="Submit" id="send">
             </form>
@@ -36,28 +32,23 @@ $(document).ready(() => {
         $("#send").click((e) => {
             e.preventDefault();
             console.log(e.target);
-            let titleInput = $("#title").val();
-            let descriptionInput = $("#description").val();
-            console.log(titleInput, descriptionInput)
+            let taskInput = $("#task").val();
             fetch(todoUrl, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json; charset=UTF-8"
                 },
                 body: JSON.stringify({
-                    title: titleInput,
-                    description: descriptionInput
+                    task: taskInput,
                 })
             })
                 .then(response => response.json())
                 .then(data => {
-                    $("#title").val("");
-                    $("#description").val("");
+                    $("#task").val("");
                     $(data).each(function (index, element) {
                         $('#todo').append(`
                         <div id="${element.id}">
-                            <h3>${element.title}</h3>
-                            <p>${element.description}</p>
+                            <h3>${element.task}</h3>
                             <button data-id="${element.id}" data-action="edit">Edit</button>
                             <button data-id="${element.id}" data-action="delete">Delete</button>
                         </div>
@@ -67,12 +58,11 @@ $(document).ready(() => {
         });
     }
 
-    function editData(url, title, description, id) {
+    function editData(url, task, id) {
         fetch(`${url}/${id}`, {
             method: "PUT",
             body: JSON.stringify({
-                title: title,
-                description: description
+                task: task,
             }),
             headers: {
                 "Content-Type": "application/json"
@@ -140,12 +130,8 @@ $(document).ready(() => {
                     });
                     $(`#${obj[0].id}`).html(`
                         <div class="form-group">
-                            <label for="edit-title">Title:</label>
-                            <input type="text" class="form-control" id="edit-title" value="${obj[0].title}">
-                        </div>
-                        <div class="form-group">
-                            <label for="edit-description">Description:</label>
-                            <input type="text" class="form-control" id="edit-description" value="${obj[0].description}">
+                            <label for="edit-task">Task:</label>
+                            <input type="text" class="form-control" id="edit-task" value="${obj[0].task}">
                         </div>
                         <button data-id="${obj[0].id}" data-action="submit-changes">Submit Changes</button>
                     `);
@@ -162,9 +148,8 @@ $(document).ready(() => {
                     let obj = data.filter(n => {
                         return n.id === parseInt(e.target.dataset.id);
                     });
-                    let title = $("#edit-title").val();
-                    let description = $("#edit-description").val();
-                    editData(todoUrl, title, description, obj[0].id);
+                    let task = $("#edit-task").val();
+                    editData(todoUrl, task, obj[0].id);
                     $("#todo").html("");
                     showData(todoUrl);
                 }
