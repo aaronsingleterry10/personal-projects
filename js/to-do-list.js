@@ -30,10 +30,47 @@ $(document).ready(() => {
             }
         })
             .then(response => response.json())
-            .then(data => console.log(data))
+    }
+
+    function deleteData(url, id) {
+        fetch(`${url}/${id}`, {
+            method: "DELETE"
+        })
+            .then(response => response.json())
     }
 
     showData(todoUrl);
+
+    $("#send").click((e) => {
+        e.preventDefault();
+        let titleInput = $("#title").val();
+        let descriptionInput = $("#description").val();
+        fetch(todoUrl, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json; charset=UTF-8"
+            },
+            body: JSON.stringify({
+                title: titleInput,
+                description: descriptionInput
+            })
+        })
+            .then(response => response.json())
+            .then(data => {
+                $("#title").val("");
+                $("#description").val("");
+                $(data).each(function (index, element) {
+                    $('#todo').append(`
+                        <div id="${element.id}">
+                            <h3>${element.title}</h3>
+                            <p>${element.description}</p>
+                            <button data-id="${element.id}" data-action="edit">Edit</button>
+                            <button data-id="${element.id}" data-action="delete">Delete</button>
+                        </div>
+                    `);
+                });
+            });
+    });
 
     $("#todo").click((e) => {
         e.preventDefault();
@@ -61,51 +98,20 @@ $(document).ready(() => {
                     let obj = data.filter(n => {
                         return n.id === parseInt(e.target.dataset.id);
                     });
+                    deleteData(todoUrl, obj[0].id);
+                    $("#todo").html("");
+                    showData(todoUrl);
                 }
                 if (button === "submit-changes") {
-                    console.log("you've clicked Submit Changes");
                     let obj = data.filter(n => {
                         return n.id === parseInt(e.target.dataset.id);
                     });
-                    console.log(obj[0].id);
                     let title = $("#edit-title").val();
                     let description = $("#edit-description").val();
-                    console.log(title, description);
                     editData(todoUrl, title, description, obj[0].id);
+                    $("#todo").html("");
+                    showData(todoUrl);
                 }
-            });
-    });
-
-    $("#send").click((e) => {
-        e.preventDefault();
-        console.log(e.target)
-        let titleInput = $("#title").val();
-        let descriptionInput = $("#description").val();
-        console.log(titleInput, descriptionInput);
-        fetch(todoUrl, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json; charset=UTF-8"
-            },
-            body: JSON.stringify({
-                title: titleInput,
-                description: descriptionInput
-            })
-        })
-            .then(response => response.json())
-            .then(data => {
-                $("#title").val("");
-                $("#description").val("");
-                $(data).each(function (index, element) {
-                    $('#todo').append(`
-                        <div id="${element.id}">
-                            <h3>${element.title}</h3>
-                            <p>${element.description}</p>
-                            <button data-id="${element.id}" data-action="edit">Edit</button>
-                            <button data-id="${element.id}" data-action="delete">Delete</button>
-                        </div>
-                    `);
-                });
             });
     });
 });
