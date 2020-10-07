@@ -5,20 +5,21 @@ $(document).ready(() => {
         console.log(e.target);
         console.log($("#date").val());
         let dateSubmit = $("#date").val();
-        dateSubmit = dateSubmit.split("-");
-        dateSubmit = dateSubmit.map(n => {
-            return parseInt(n);
-        });
-        console.log(dateSubmit);
+        console.log(convertDateToDatestamp(dateSubmit));
+        // dateSubmit = dateSubmit.split("-");
+        // dateSubmit = dateSubmit.map(n => {
+        //     return parseInt(n);
+        // });
+        // console.log(dateSubmit);
         // console.log(parseInt(dateSubmit[1]));
-        let date = new Date();
-        date.setFullYear(dateSubmit[0]);
-        date.setMonth(dateSubmit[1] - 1);
-        date.setDate(dateSubmit[2]);
+        // let date = new Date();
+        // date.setFullYear(dateSubmit[0]);
+        // date.setMonth(dateSubmit[1] - 1);
+        // date.setDate(dateSubmit[2]);
         // let date = new Date(parseInt(dateSubmit[0]), parseInt(dateSubmit[1]), parseInt(dateSubmit[2]));
-        console.log(date);
-        console.log(date.toJSON());
-        console.log(date.getMonth());
+        // console.log(date);
+        // console.log(date.toJSON());
+        // console.log(date.getMonth());
         // let newDate = date.toJSON();
         // console.log(JSON.parse(newDate));
 
@@ -26,10 +27,10 @@ $(document).ready(() => {
 
     function convertDateToDatestamp(date) {
         date = date.split("-");
-        date.map(n => {
+        date = date.map(n => {
             return parseInt(n);
         });
-        let newDate
+        return new Date(date[0], (date[1] - 1), date[2]);
     }
     function showData(url) {
         fetch(url)
