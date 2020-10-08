@@ -167,10 +167,14 @@ $(document).ready(() => {
                     let obj = data.filter(n => {
                         return n.id === parseInt(e.target.dataset.id);
                     });
+                    console.log(obj)
+                    let taskDate = new Date(obj[0].date);
                     $(`#${obj[0].id}`).html(`
                         <div class="form-group">
-                            <label for="edit-task">Task:</label>
+                            <label for="edit-task">Task</label>
                             <input type="text" class="form-control" id="edit-task" value="${obj[0].task}">
+                            <label for="edit-date">Date (Currently: <span>${taskDate.toDateString()}</span>)</label>
+                            <input type="date" class="form-control" id="edit-date"> 
                         </div>
                         <button data-id="${obj[0].id}" data-action="submit-changes">Submit Changes</button>
                     `);
@@ -188,6 +192,7 @@ $(document).ready(() => {
                         return n.id === parseInt(e.target.dataset.id);
                     });
                     let task = $("#edit-task").val();
+                    let taskDate = $("#task").val();
                     editData(todoUrl, task, obj[0].id);
                     $("#todo").html("");
                     showData(todoUrl);
