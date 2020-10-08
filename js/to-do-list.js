@@ -83,10 +83,11 @@ $(document).ready(() => {
                 .then(data => {
                     $("#task").val("");
                     $(data).each(function (index, element) {
+                        let taskDate = new Date(element.date);
                         $('#todo').append(`
                         <div id="${element.id}">
                             <h3>${element.task}</h3>
-                            <div>${new Date(element.date)}</div>
+                            <div>${taskDate.toDateString()}</div>
                             <button data-id="${element.id}" data-action="edit">Edit</button>
                             <button data-id="${element.id}" data-action="delete">Delete</button>
                         </div>
