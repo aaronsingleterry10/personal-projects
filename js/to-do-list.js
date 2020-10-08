@@ -58,7 +58,7 @@ $(document).ready(() => {
                     <label for="task">Task</label>
                     <input type="text" class="form-control" id="task" name="task">
                     <label for="date">Date</label>
-                    <input type="date" id="date" name="date">
+                    <input type="date" class="form-control" id="date" name="date">
                 </div>
                 <input type="submit" value="Submit" id="send">
             </form>
