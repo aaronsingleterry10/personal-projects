@@ -1,11 +1,11 @@
 $(document).ready(() => {
     const todoUrl = "http://localhost:3000/todo";
-    $("#submit-date").click(e => {
-        e.preventDefault();
-        console.log(e.target);
-        console.log($("#date").val());
-        let dateSubmit = $("#date").val();
-        console.log(convertDateToDatestamp(dateSubmit));
+    // $("#submit-date").click(e => {
+    //     e.preventDefault();
+    //     console.log(e.target);
+        // console.log($("#date").val());
+        // let dateSubmit = $("#date").val();
+        // console.log(convertDateToDatestamp(dateSubmit));
         // dateSubmit = dateSubmit.split("-");
         // dateSubmit = dateSubmit.map(n => {
         //     return parseInt(n);
@@ -23,7 +23,7 @@ $(document).ready(() => {
         // let newDate = date.toJSON();
         // console.log(JSON.parse(newDate));
 
-    })
+    // })
 
     function convertDateToDatestamp(date) {
         date = date.split("-");
@@ -40,6 +40,7 @@ $(document).ready(() => {
                     $('#todo').append(`
                         <div id="${element.id}">
                             <h3>${element.task}</h3>
+                            <div>${element.date}</div>
                             <button data-id="${element.id}" data-action="edit">Edit</button>
                             <button data-id="${element.id}" data-action="delete">Delete</button>
                         </div>
@@ -55,6 +56,8 @@ $(document).ready(() => {
                 <div class="form-group">
                     <label for="task">Task</label>
                     <input type="text" class="form-control" id="task" name="task">
+                    <label for="date">Date</label>
+                    <input type="date" id="date" name="date">
                 </div>
                 <input type="submit" value="Submit" id="send">
             </form>
@@ -64,13 +67,15 @@ $(document).ready(() => {
             e.preventDefault();
             console.log(e.target);
             let taskInput = $("#task").val();
+            let dateInput = convertDateToDatestamp($("#date").val());
             fetch(todoUrl, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json; charset=UTF-8"
                 },
                 body: JSON.stringify({
-                    task: taskInput,
+                    date: dateInput,
+                    task: taskInput
                 })
             })
                 .then(response => response.json())
