@@ -1,19 +1,14 @@
 {
   "todo": [
     {
-      "date": "2020-10-19T05:00:00.000Z",
-      "task": "Brand New Task",
-      "id": 4
-    },
-    {
-      "date": "2020-10-29T05:00:00.000Z",
-      "task": "Fourth Task",
-      "id": 5
-    },
-    {
-      "date": "2020-10-18T05:00:00.000Z",
-      "task": "Fifth Task",
+      "task": "Fifth Task (updated)",
+      "date": "2020-10-24T05:00:00.000Z",
       "id": 6
+    },
+    {
+      "date": "2020-10-16T05:00:00.000Z",
+      "task": "Task 1",
+      "id": 7
     }
   ]
 }
