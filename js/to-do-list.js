@@ -1,35 +1,11 @@
 $(document).ready(() => {
     const todoUrl = "http://localhost:3000/todo";
-    // $("#submit-date").click(e => {
-    //     e.preventDefault();
-    //     console.log(e.target);
-    // console.log($("#date").val());
-    // let dateSubmit = $("#date").val();
-    // console.log(convertDateToDatestamp(dateSubmit));
-    // dateSubmit = dateSubmit.split("-");
-    // dateSubmit = dateSubmit.map(n => {
-    //     return parseInt(n);
-    // });
-    // console.log(dateSubmit);
-    // console.log(parseInt(dateSubmit[1]));
-    // let date = new Date();
-    // date.setFullYear(dateSubmit[0]);
-    // date.setMonth(dateSubmit[1] - 1);
-    // date.setDate(dateSubmit[2]);
-    // let date = new Date(parseInt(dateSubmit[0]), parseInt(dateSubmit[1]), parseInt(dateSubmit[2]));
-    // console.log(date);
-    // console.log(date.toJSON());
-    // console.log(date.getMonth());
-    // let newDate = date.toJSON();
-    // console.log(JSON.parse(newDate));
-
-    // })
-
     let myData = [];
 
     fetch(todoUrl)
         .then(response => response.json())
         .then(data => {
+            console.log(data)
             for (let i = 0; i < data.length; i++) {
                 myData.push(data[i]);
             }
@@ -67,7 +43,7 @@ $(document).ready(() => {
     function findAll(data) {
         $(data).each(function (index, element) {
             let taskDate = new Date(element.date);
-            $('#todo').append(`
+            $('#todo').html(`
                         <div id="${element.id}">
                             <h3>${element.task}</h3>
                             <div>${taskDate.toDateString()}</div>
@@ -125,8 +101,31 @@ $(document).ready(() => {
         });
     }
 
-    function editData(url, task, date, id) {
-        fetch(`${url}/${id}`, {
+    function clickedEdit(url, eButton) {
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                let obj = data.filter(n => {
+                    return n.id === parseInt(eButton.target.dataset.id);
+                });
+                console.log(obj)
+                let taskDate = new Date(obj[0].date);
+                $(`#${obj[0].id}`).html(`
+                        <form>
+                            <div class="form-group">
+                                <label for="edit-task">Task</label>
+                                <input type="text" class="form-control" id="edit-task" value="${obj[0].task}">
+                                <label for="edit-date">Date (Currently: <span>${taskDate.toDateString()}</span>)</label>
+                                <input type="date" class="form-control" id="edit-date" name="edit-date">
+                            </div>
+                            <button data-id="${obj[0].id}" data-action="submit-changes">Submit Changes</button>
+                        </form>
+                    `);
+            })
+    }
+
+    function editData(url, task, date, eButton) {
+        fetch(`${url}/${eButton.target.dataset.id}`, {
             method: "PUT",
             body: JSON.stringify({
                 task: task,
@@ -139,8 +138,8 @@ $(document).ready(() => {
             .then(response => response.json())
     }
 
-    function deleteData(url, id) {
-        fetch(`${url}/${id}`, {
+    function deleteData(url, eButton) {
+        fetch(`${url}/${eButton.target.dataset.id}`, {
             method: "DELETE"
         })
             .then(response => response.json())
@@ -149,85 +148,48 @@ $(document).ready(() => {
     showData(todoUrl);
 
     $("#create-task").click((e) => {
-        // e.preventDefault()
         createTask();
     });
-
-    // $("#send").click((e) => {
-    //     e.preventDefault();
-    //     console.log(e.target);
-    //     let titleInput = $("#title").val();
-    //     let descriptionInput = $("#description").val();
-    //     console.log(titleInput, descriptionInput)
-    //     fetch(todoUrl, {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json; charset=UTF-8"
-    //         },
-    //         body: JSON.stringify({
-    //             title: titleInput,
-    //             description: descriptionInput
-    //         })
-    //     })
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             $("#title").val("");
-    //             $("#description").val("");
-    //             $(data).each(function (index, element) {
-    //                 $('#todo').append(`
-    //                     <div id="${element.id}">
-    //                         <h3>${element.title}</h3>
-    //                         <p>${element.description}</p>
-    //                         <button data-id="${element.id}" data-action="edit">Edit</button>
-    //                         <button data-id="${element.id}" data-action="delete">Delete</button>
-    //                     </div>
-    //                 `);
-    //             });
-    //         });
-    // });
 
     $("#todo").click((e) => {
         e.preventDefault();
         let button = e.target.dataset.action
-        fetch(todoUrl)
-            .then(response => response.json())
-            .then(data => {
-                if (button === "edit") {
-                    let obj = data.filter(n => {
-                        return n.id === parseInt(e.target.dataset.id);
-                    });
-                    console.log(obj)
-                    let taskDate = new Date(obj[0].date);
-                    $(`#${obj[0].id}`).html(`
-                        <form>
-                            <div class="form-group">
-                                <label for="edit-task">Task</label>
-                                <input type="text" class="form-control" id="edit-task" value="${obj[0].task}">
-                                <label for="edit-date">Date (Currently: <span>${taskDate.toDateString()}</span>)</label>
-                                <input type="date" class="form-control" id="edit-date" name="edit-date"> 
-                            </div>
-                            <button data-id="${obj[0].id}" data-action="submit-changes">Submit Changes</button>
-                        </form>
-                    `);
-                }
-                if (button === "delete") {
-                    let obj = data.filter(n => {
-                        return n.id === parseInt(e.target.dataset.id);
-                    });
-                    deleteData(todoUrl, obj[0].id);
-                    $("#todo").html("");
-                    showData(todoUrl);
-                }
-                if (button === "submit-changes") {
-                    let obj = data.filter(n => {
-                        return n.id === parseInt(e.target.dataset.id);
-                    });
-                    let task = $("#edit-task").val();
-                    let taskDate = convertDateToDatestamp($("#edit-date").val());
-                    editData(todoUrl, task, taskDate, obj[0].id);
-                    $("#todo").html("");
-                    showData(todoUrl);
-                }
-            });
+        if (button === "edit") {
+            clickedEdit(todoUrl, e)
+            // let obj = data.filter(n => {
+            //     return n.id === parseInt(e.target.dataset.id);
+            // });
+            // console.log(obj)
+            // let taskDate = new Date(obj[0].date);
+            // $(`#${obj[0].id}`).html(`
+            //     <form>
+            //         <div class="form-group">
+            //             <label for="edit-task">Task</label>
+            //             <input type="text" class="form-control" id="edit-task" value="${obj[0].task}">
+            //             <label for="edit-date">Date (Currently: <span>${taskDate.toDateString()}</span>)</label>
+            //             <input type="date" class="form-control" id="edit-date" name="edit-date">
+            //         </div>
+            //         <button data-id="${obj[0].id}" data-action="submit-changes">Submit Changes</button>
+            //     </form>
+            // `);
+        }
+        if (button === "delete") {
+            // let obj = data.filter(n => {
+            //     return n.id === parseInt(e.target.dataset.id);
+            // });
+            deleteData(todoUrl, e);
+            $("#todo").html("");
+            showData(todoUrl);
+        }
+        if (button === "submit-changes") {
+            // let obj = data.filter(n => {
+            //     return n.id === parseInt(e.target.dataset.id);
+            // });
+            let task = $("#edit-task").val();
+            let taskDate = convertDateToDatestamp($("#edit-date").val());
+            editData(todoUrl, task, taskDate, e);
+            $("#todo").html("");
+            showData(todoUrl);
+        }
     });
 });
