@@ -14,6 +14,19 @@ $(document).ready(() => {
 
     console.log(myData)
 
+    function returnDateString(date) {
+        let year = date.getFullYear();
+        let month = date.getMonth() + 1;
+        let day = date.getDate();
+        if (month < 10) {
+            month = "0" + month;
+        }
+        if (day < 10) {
+            day = "0" + day;
+        }
+        return "" + year + "-" + month + "-" + day;
+    }
+
     function convertDateToDatestamp(date) {
         date = date.split("-");
         date = date.map(n => {
@@ -28,6 +41,7 @@ $(document).ready(() => {
             .then(data => {
                 $(data).each(function (index, element) {
                     let taskDate = new Date(element.date);
+                    console.log(returnDateString(taskDate));
                     $('#todo').append(`
                         <div id="${element.id}">
                             <h3>${element.task}</h3>
