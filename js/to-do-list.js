@@ -174,17 +174,11 @@ $(document).ready(() => {
             // `);
         }
         if (button === "delete") {
-            // let obj = data.filter(n => {
-            //     return n.id === parseInt(e.target.dataset.id);
-            // });
             deleteData(todoUrl, e);
             $("#todo").html("");
             showData(todoUrl);
         }
         if (button === "submit-changes") {
-            // let obj = data.filter(n => {
-            //     return n.id === parseInt(e.target.dataset.id);
-            // });
             let task = $("#edit-task").val();
             let taskDate = convertDateToDatestamp($("#edit-date").val());
             editData(todoUrl, task, taskDate, e);
