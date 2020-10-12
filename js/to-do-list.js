@@ -118,17 +118,17 @@ $(document).ready(() => {
                 let obj = data.filter(n => {
                     return n.id === parseInt(eButton.target.dataset.id);
                 });
-                console.log(obj)
                 let taskDate = new Date(obj[0].date);
                 $(`#${obj[0].id}`).html(`
                         <form>
                             <div class="form-group">
                                 <label for="edit-task">Task</label>
                                 <input type="text" class="form-control" id="edit-task" value="${obj[0].task}">
-                                <label for="edit-date">Date (Currently: <span>${taskDate.toDateString()}</span>)</label>
+                                <label for="edit-date">Date</label>
                                 <input type="date" class="form-control" id="edit-date" name="edit-date" value="${returnDateString(taskDate)}">
                             </div>
                             <button data-id="${obj[0].id}" data-action="submit-changes">Submit Changes</button>
+                            <button data-id="${obj[0].id}" data-action="cancel">Cancel</button>
                         </form>
                     `);
             })
@@ -162,9 +162,9 @@ $(document).ready(() => {
     });
 
     $("#todo").click((e) => {
-        e.preventDefault();
         let button = e.target.dataset.action
         if (button === "edit") {
+            e.preventDefault();
             clickedEdit(todoUrl, e)
             // let obj = data.filter(n => {
             //     return n.id === parseInt(e.target.dataset.id);
@@ -192,6 +192,11 @@ $(document).ready(() => {
             let task = $("#edit-task").val();
             let taskDate = convertDateToDatestamp($("#edit-date").val());
             editData(todoUrl, task, taskDate, e);
+            $("#todo").html("");
+            showData(todoUrl);
+        }
+        if (button === "cancel") {
+            e.preventDefault();
             $("#todo").html("");
             showData(todoUrl);
         }
