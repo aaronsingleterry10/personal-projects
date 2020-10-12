@@ -5,14 +5,11 @@ $(document).ready(() => {
     fetch(todoUrl)
         .then(response => response.json())
         .then(data => {
-            console.log(data)
             for (let i = 0; i < data.length; i++) {
                 myData.push(data[i]);
             }
             return myData;
         });
-
-    console.log(myData)
 
     function returnDateString(date) {
         let year = date.getFullYear();
@@ -41,7 +38,6 @@ $(document).ready(() => {
             .then(data => {
                 $(data).each(function (index, element) {
                     let taskDate = new Date(element.date);
-                    console.log(returnDateString(taskDate));
                     $('#todo').append(`
                         <div id="${element.id}">
                             <h3>${element.task}</h3>
@@ -130,7 +126,7 @@ $(document).ready(() => {
                                 <label for="edit-task">Task</label>
                                 <input type="text" class="form-control" id="edit-task" value="${obj[0].task}">
                                 <label for="edit-date">Date (Currently: <span>${taskDate.toDateString()}</span>)</label>
-                                <input type="date" class="form-control" id="edit-date" name="edit-date">
+                                <input type="date" class="form-control" id="edit-date" name="edit-date" value="${returnDateString(taskDate)}">
                             </div>
                             <button data-id="${obj[0].id}" data-action="submit-changes">Submit Changes</button>
                         </form>
