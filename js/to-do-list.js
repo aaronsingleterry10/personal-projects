@@ -201,4 +201,30 @@ $(document).ready(() => {
             showData(todoUrl);
         }
     });
+
+    $("#search-btn").click((e) => {
+        e.preventDefault();
+       // console.log($("#search").val());
+       fetch(todoUrl)
+           .then(response => response.json())
+           .then(data => {
+               let searchedTask = $("#search").val();
+               let tasks = [];
+               $(data).each((index, task) => {
+                   console.log(task.task.indexOf("floors"));
+                   if (task.task.toLowerCase().indexOf(searchedTask) >= 0) {
+                       tasks.push(task);
+                   }
+               });
+               console.log(tasks);
+              //  let obj = data.filter(n => {
+              //     if (n.task.toLowerCase().indexOf("mop") >= 0) {
+              //         searchedTasks.push(n);
+              //     }
+              //     // console.log(n.task.toLowerCase().indexOf("mop"));
+              //     // return n.task.toLowerCase().indexOf("mop");
+              // });
+              // console.log(obj);
+           });
+    });
 });
