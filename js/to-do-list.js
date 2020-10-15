@@ -51,9 +51,10 @@ $(document).ready(() => {
     }
 
     function findAll(data) {
+        $('#todo').html("");
         $(data).each(function (index, element) {
             let taskDate = new Date(element.date);
-            $('#todo').html(`
+            $('#todo').append(`
                         <div id="${element.id}">
                             <h3>${element.task}</h3>
                             <div>${taskDate.toDateString()}</div>
@@ -204,27 +205,17 @@ $(document).ready(() => {
 
     $("#search-btn").click((e) => {
         e.preventDefault();
-       // console.log($("#search").val());
-       fetch(todoUrl)
-           .then(response => response.json())
-           .then(data => {
-               let searchedTask = $("#search").val();
-               let tasks = [];
-               $(data).each((index, task) => {
-                   console.log(task.task.indexOf("floors"));
-                   if (task.task.toLowerCase().indexOf(searchedTask) >= 0) {
-                       tasks.push(task);
-                   }
-               });
-               console.log(tasks);
-              //  let obj = data.filter(n => {
-              //     if (n.task.toLowerCase().indexOf("mop") >= 0) {
-              //         searchedTasks.push(n);
-              //     }
-              //     // console.log(n.task.toLowerCase().indexOf("mop"));
-              //     // return n.task.toLowerCase().indexOf("mop");
-              // });
-              // console.log(obj);
-           });
+        fetch(todoUrl)
+            .then(response => response.json())
+            .then(data => {
+                let searchedTask = $("#search").val();
+                let tasks = [];
+                $(data).each((index, task) => {
+                    if (task.task.toLowerCase().indexOf(searchedTask) >= 0) {
+                        tasks.push(task);
+                    }
+                });
+                findAll(tasks);
+            });
     });
 });
