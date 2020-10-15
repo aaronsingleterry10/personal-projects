@@ -1,15 +1,5 @@
 $(document).ready(() => {
     const todoUrl = "http://localhost:3000/todo";
-    let myData = [];
-
-    fetch(todoUrl)
-        .then(response => response.json())
-        .then(data => {
-            for (let i = 0; i < data.length; i++) {
-                myData.push(data[i]);
-            }
-            return myData;
-        });
 
     function returnDateString(date) {
         let year = date.getFullYear();
