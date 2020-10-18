@@ -66,6 +66,7 @@ $(document).ready(() => {
                     <input type="date" class="form-control" id="date" name="date">
                 </div>
                 <input type="submit" value="Submit" id="send">
+                <button data-action="cancel-create">Cancel</button>
             </form>
         `);
 
@@ -101,6 +102,11 @@ $(document).ready(() => {
                 });
         });
     }
+
+    $("#create-task").click((e) => {
+        e.preventDefault();
+        createTask();
+    });
 
     function clickedEdit(url, eButton) {
         fetch(url)
@@ -147,10 +153,6 @@ $(document).ready(() => {
     }
 
     showData(todoUrl);
-
-    $("#create-task").click((e) => {
-        createTask();
-    });
 
     $("#todo").click((e) => {
         let button = e.target.dataset.action
