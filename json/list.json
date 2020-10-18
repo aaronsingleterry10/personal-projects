@@ -11,19 +11,14 @@
       "id": 10
     },
     {
+      "task": "Sweep floors (updated)",
       "date": "2020-10-13T05:00:00.000Z",
-      "task": "Sweep floors",
       "id": 11
     },
     {
-      "date": "2020-10-22T05:00:00.000Z",
-      "task": "Clean gutters",
+      "date": "2020-10-29T05:00:00.000Z",
+      "task": "Walk the dogs",
       "id": 12
-    },
-    {
-      "date": "2020-10-27T05:00:00.000Z",
-      "task": "Walk the pups",
-      "id": 13
     }
   ]
 }
