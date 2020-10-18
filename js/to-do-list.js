@@ -66,7 +66,7 @@ $(document).ready(() => {
                     <input type="date" class="form-control" id="date" name="date">
                 </div>
                 <input type="submit" value="Submit" id="send">
-                <button data-action="cancel-create">Cancel</button>
+                <button id="cancel">Cancel</button>
             </form>
         `);
 
@@ -100,6 +100,14 @@ $(document).ready(() => {
                     `);
                     });
                 });
+        });
+
+        $("#cancel").click(e => {
+            e.preventDefault();
+            console.log("hit cancel")
+            // $("#todo").html("");
+            // showData(todoUrl);
+            $("#task-form").html("");
         });
     }
 
