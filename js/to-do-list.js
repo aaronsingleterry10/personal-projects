@@ -105,8 +105,6 @@ $(document).ready(() => {
         $("#cancel").click(e => {
             e.preventDefault();
             console.log("hit cancel")
-            // $("#todo").html("");
-            // showData(todoUrl);
             $("#task-form").html("");
         });
     }
