@@ -26,6 +26,7 @@ $(document).ready(() => {
         fetch(url)
             .then(response => response.json())
             .then(data => {
+                data.sort(sortTasks);
                 $(data).each(function (index, element) {
                     let taskDate = new Date(element.date);
                     $('#todo').append(`
@@ -156,6 +157,10 @@ $(document).ready(() => {
             method: "DELETE"
         })
             .then(response => response.json())
+    }
+
+    function sortTasks(a, b) {
+        return new Date(a.date).getTime() - new Date(b.date).getTime();
     }
 
     showData(todoUrl);
