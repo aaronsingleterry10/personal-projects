@@ -29,17 +29,6 @@ $(document).ready(() => {
             .then(data => {
                 data.sort(sortTasks);
                 findAll(data);
-                // $(data).each(function (index, element) {
-                //     let taskDate = new Date(element.date);
-                //     $('#todo').append(`
-                //         <div id="${element.id}">
-                //             <h3>${element.task}</h3>
-                //             <div>${taskDate.toDateString()}</div>
-                //             <button data-id="${element.id}" data-action="edit">Edit</button>
-                //             <button data-id="${element.id}" data-action="delete">Delete</button>
-                //         </div>
-                //     `);
-                // });
             });
     }
 
@@ -91,23 +80,6 @@ $(document).ready(() => {
                 .then(response => response.json());
             showData(todoUrl);
             $("#task-form").html("");
-                // .then(data => {
-                //     // data.sort(sortTasks);
-                //     console.log(data)
-                //     // findAll(data);
-                //     $("#task").val("");
-                //     $(data).each(function (index, element) {
-                //         let taskDate = new Date(element.date);
-                //         $('#todo').append(`
-                //         <div id="${element.id}">
-                //             <h3>${element.task}</h3>
-                //             <div>${taskDate.toDateString()}</div>
-                //             <button data-id="${element.id}" data-action="edit">Edit</button>
-                //             <button data-id="${element.id}" data-action="delete">Delete</button>
-                //         </div>
-                //     `);
-                //     });
-                // });
         });
 
         $("#cancel").click(e => {
