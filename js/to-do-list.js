@@ -21,7 +21,8 @@ $(document).ready(() => {
         });
         return new Date(date[0], (date[1] - 1), date[2]);
     }
-    // This function displays the fetched data on page
+
+    // This function fetches the list.json data
     function showData(url) {
         fetch(url)
             .then(response => response.json())
@@ -42,6 +43,7 @@ $(document).ready(() => {
             });
     }
 
+    // This function displace data onto the page
     function findAll(data) {
         $('#todo').html("");
         $(data).each(function (index, element) {
@@ -74,7 +76,6 @@ $(document).ready(() => {
 
         $("#send").click((e) => {
             e.preventDefault();
-            console.log(e.target);
             let taskInput = $("#task").val();
             let dateInput = convertDateToDatestamp($("#date").val());
             fetch(todoUrl, {
@@ -87,21 +88,26 @@ $(document).ready(() => {
                     task: taskInput
                 })
             })
-                .then(response => response.json())
-                .then(data => {
-                    $("#task").val("");
-                    $(data).each(function (index, element) {
-                        let taskDate = new Date(element.date);
-                        $('#todo').append(`
-                        <div id="${element.id}">
-                            <h3>${element.task}</h3>
-                            <div>${taskDate.toDateString()}</div>
-                            <button data-id="${element.id}" data-action="edit">Edit</button>
-                            <button data-id="${element.id}" data-action="delete">Delete</button>
-                        </div>
-                    `);
-                    });
-                });
+                .then(response => response.json());
+            showData(todoUrl);
+            $("#task-form").html("");
+                // .then(data => {
+                //     // data.sort(sortTasks);
+                //     console.log(data)
+                //     // findAll(data);
+                //     $("#task").val("");
+                //     $(data).each(function (index, element) {
+                //         let taskDate = new Date(element.date);
+                //         $('#todo').append(`
+                //         <div id="${element.id}">
+                //             <h3>${element.task}</h3>
+                //             <div>${taskDate.toDateString()}</div>
+                //             <button data-id="${element.id}" data-action="edit">Edit</button>
+                //             <button data-id="${element.id}" data-action="delete">Delete</button>
+                //         </div>
+                //     `);
+                //     });
+                // });
         });
 
         $("#cancel").click(e => {
