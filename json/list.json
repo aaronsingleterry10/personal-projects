@@ -21,9 +21,14 @@
       "id": 17
     },
     {
+      "task": "Clean garage (completed)",
       "date": "2020-10-20T05:00:00.000Z",
-      "task": "Clean garage",
       "id": 18
+    },
+    {
+      "date": "2020-10-23T05:00:00.000Z",
+      "task": "Wash towels",
+      "id": 19
     }
   ]
 }
