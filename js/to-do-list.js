@@ -21,23 +21,24 @@ $(document).ready(() => {
         });
         return new Date(date[0], (date[1] - 1), date[2]);
     }
-
+    // This function displays the fetched data on page
     function showData(url) {
         fetch(url)
             .then(response => response.json())
             .then(data => {
                 data.sort(sortTasks);
-                $(data).each(function (index, element) {
-                    let taskDate = new Date(element.date);
-                    $('#todo').append(`
-                        <div id="${element.id}">
-                            <h3>${element.task}</h3>
-                            <div>${taskDate.toDateString()}</div>
-                            <button data-id="${element.id}" data-action="edit">Edit</button>
-                            <button data-id="${element.id}" data-action="delete">Delete</button>
-                        </div>
-                    `);
-                });
+                findAll(data);
+                // $(data).each(function (index, element) {
+                //     let taskDate = new Date(element.date);
+                //     $('#todo').append(`
+                //         <div id="${element.id}">
+                //             <h3>${element.task}</h3>
+                //             <div>${taskDate.toDateString()}</div>
+                //             <button data-id="${element.id}" data-action="edit">Edit</button>
+                //             <button data-id="${element.id}" data-action="delete">Delete</button>
+                //         </div>
+                //     `);
+                // });
             });
     }
 
