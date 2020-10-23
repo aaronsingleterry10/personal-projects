@@ -3,32 +3,43 @@
     {
       "date": "2020-10-22T05:00:00.000Z",
       "task": "Mop floor",
+      "isComplete": false,
       "id": 14
     },
     {
       "date": "2020-10-21T05:00:00.000Z",
       "task": "Date night",
+      "isComplete": false,
       "id": 15
     },
     {
       "date": "2020-10-22T05:00:00.000Z",
       "task": "Walk Dog",
+      "isComplete": false,
       "id": 16
     },
     {
       "date": "2020-10-20T05:00:00.000Z",
       "task": "Wash dishes",
+      "isComplete": false,
       "id": 17
     },
     {
-      "task": "Clean garage (completed)",
+      "task": "Clean garage",
       "date": "2020-10-20T05:00:00.000Z",
       "id": 18
     },
     {
       "date": "2020-10-23T05:00:00.000Z",
       "task": "Wash towels",
+      "isComplete": false,
       "id": 19
+    },
+    {
+      "date": "2020-10-22T05:00:00.000Z",
+      "task": "Wash clothes",
+      "isComplete": false,
+      "id": 20
     }
   ]
 }
