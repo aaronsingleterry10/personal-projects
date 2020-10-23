@@ -21,7 +21,7 @@
     {
       "date": "2020-10-20T05:00:00.000Z",
       "task": "Wash dishes",
-      "isComplete": false,
+      "isComplete": true,
       "id": 17
     },
     {
@@ -38,7 +38,7 @@
     {
       "date": "2020-10-22T05:00:00.000Z",
       "task": "Wash clothes",
-      "isComplete": false,
+      "isComplete": true,
       "id": 20
     }
   ]
