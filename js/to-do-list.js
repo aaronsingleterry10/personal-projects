@@ -50,6 +50,7 @@ $(document).ready(() => {
                             <div>${taskDate.toDateString()}</div>
                             <button data-id="${element.id}" data-action="edit">Edit</button>
                             <button data-id="${element.id}" data-action="delete">Delete</button>
+                            <button data-id="${element.id}" data-action="complete">Complete</button>
                         </div>
                     `);
         });
@@ -146,6 +147,19 @@ $(document).ready(() => {
             .then(response => response.json())
     }
 
+    function completeTask(url, eButton) {
+        fetch(`${url}/${eButton.target.dataset.id}`, {
+            method: "PATCH",
+            body: JSON.stringify({
+                isComplete: true
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(response => response.json())
+    }
+
     function sortTasks(a, b) {
         return new Date(a.date).getTime() - new Date(b.date).getTime();
     }
@@ -172,6 +186,12 @@ $(document).ready(() => {
         }
         if (button === "cancel") {
             e.preventDefault();
+            $("#todo").html("");
+            showData(todoUrl);
+        }
+        if (button === "complete") {
+            e.preventDefault();
+            completeTask(todoUrl, e);
             $("#todo").html("");
             showData(todoUrl);
         }
