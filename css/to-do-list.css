@@ -5,3 +5,8 @@
 label {
     font-size: 20px;
 }
+
+.title {
+    display: flex;
+    align-items: center;
+}
