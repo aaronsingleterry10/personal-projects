@@ -149,22 +149,6 @@ $(document).ready(() => {
         if (button === "edit") {
             e.preventDefault();
             clickedEdit(todoUrl, e)
-            // let obj = data.filter(n => {
-            //     return n.id === parseInt(e.target.dataset.id);
-            // });
-            // console.log(obj)
-            // let taskDate = new Date(obj[0].date);
-            // $(`#${obj[0].id}`).html(`
-            //     <form>
-            //         <div class="form-group">
-            //             <label for="edit-task">Task</label>
-            //             <input type="text" class="form-control" id="edit-task" value="${obj[0].task}">
-            //             <label for="edit-date">Date (Currently: <span>${taskDate.toDateString()}</span>)</label>
-            //             <input type="date" class="form-control" id="edit-date" name="edit-date">
-            //         </div>
-            //         <button data-id="${obj[0].id}" data-action="submit-changes">Submit Changes</button>
-            //     </form>
-            // `);
         }
         if (button === "delete") {
             deleteData(todoUrl, e);
