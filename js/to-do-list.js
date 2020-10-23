@@ -37,9 +37,16 @@ $(document).ready(() => {
         $('#todo').html("");
         $(data).each(function (index, element) {
             let taskDate = new Date(element.date);
+            let completed = "";
+            if (element.isComplete === true) {
+                completed = `<span class="badge badge-success ml-2">Completed!</span>`
+            }
             $('#todo').append(`
                         <div id="${element.id}">
-                            <h3>${element.task}</h3>
+                            <div class="title">
+                                <h3>${element.task}</h3>
+                                ${completed}
+                            </div>
                             <div>${taskDate.toDateString()}</div>
                             <button data-id="${element.id}" data-action="edit">Edit</button>
                             <button data-id="${element.id}" data-action="delete">Delete</button>
@@ -74,7 +81,8 @@ $(document).ready(() => {
                 },
                 body: JSON.stringify({
                     date: dateInput,
-                    task: taskInput
+                    task: taskInput,
+                    isComplete: false
                 })
             })
                 .then(response => response.json());
