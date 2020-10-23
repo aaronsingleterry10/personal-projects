@@ -7,12 +7,6 @@
       "id": 14
     },
     {
-      "date": "2020-10-21T05:00:00.000Z",
-      "task": "Date night",
-      "isComplete": false,
-      "id": 15
-    },
-    {
       "date": "2020-10-22T05:00:00.000Z",
       "task": "Walk Dog",
       "isComplete": false,
@@ -27,12 +21,13 @@
     {
       "task": "Clean garage",
       "date": "2020-10-20T05:00:00.000Z",
+      "isComplete": false,
       "id": 18
     },
     {
       "date": "2020-10-23T05:00:00.000Z",
       "task": "Wash towels",
-      "isComplete": false,
+      "isComplete": true,
       "id": 19
     },
     {
