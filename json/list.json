@@ -3,7 +3,7 @@
     {
       "date": "2020-10-22T05:00:00.000Z",
       "task": "Mop floor",
-      "isComplete": false,
+      "isComplete": true,
       "id": 14
     },
     {
@@ -11,30 +11,6 @@
       "task": "Walk Dog",
       "isComplete": false,
       "id": 16
-    },
-    {
-      "date": "2020-10-20T05:00:00.000Z",
-      "task": "Wash dishes",
-      "isComplete": true,
-      "id": 17
-    },
-    {
-      "task": "Clean garage",
-      "date": "2020-10-20T05:00:00.000Z",
-      "isComplete": true,
-      "id": 18
-    },
-    {
-      "date": "2020-10-23T05:00:00.000Z",
-      "task": "Wash towels",
-      "isComplete": true,
-      "id": 19
-    },
-    {
-      "date": "2020-10-22T05:00:00.000Z",
-      "task": "Wash clothes",
-      "isComplete": true,
-      "id": 20
     }
   ]
 }
