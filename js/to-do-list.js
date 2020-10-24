@@ -39,7 +39,7 @@ $(document).ready(() => {
             let taskDate = new Date(element.date);
             let completed = "";
             if (element.isComplete === true) {
-                completed = `<span class="badge badge-success ml-2">Completed!</span>`
+                completed = `<span class="badge badge-success ml-2">&check;</span>`
             }
             $('#todo').append(`
                         <div id="${element.id}" class="card text-white bg-dark mb-3" style="max-width: 18rem;">
