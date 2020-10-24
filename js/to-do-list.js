@@ -42,15 +42,17 @@ $(document).ready(() => {
                 completed = `<span class="badge badge-success ml-2">Completed!</span>`
             }
             $('#todo').append(`
-                        <div id="${element.id}">
-                            <div class="title">
-                                <h3>${element.task}</h3>
-                                ${completed}
+                        <div id="${element.id}" class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+                            <div class="card-header">${taskDate.toDateString()}</div>
+                            <div class="card-body">
+                                <div class="title card-title">
+                                    <h5>${element.task}</h5>
+                                    ${completed}
+                                </div>
+                                <button data-id="${element.id}" data-action="edit">Edit</button>
+                                <button data-id="${element.id}" data-action="delete">Delete</button>
+                                <button data-id="${element.id}" data-action="complete">Complete</button>
                             </div>
-                            <div>${taskDate.toDateString()}</div>
-                            <button data-id="${element.id}" data-action="edit">Edit</button>
-                            <button data-id="${element.id}" data-action="delete">Delete</button>
-                            <button data-id="${element.id}" data-action="complete">Complete</button>
                         </div>
                     `);
         });
