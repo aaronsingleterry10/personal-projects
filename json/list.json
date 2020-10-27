@@ -15,7 +15,7 @@
     {
       "date": "2020-10-30T05:00:00.000Z",
       "task": "Clean dishes",
-      "isComplete": false,
+      "isComplete": true,
       "id": 17
     },
     {
