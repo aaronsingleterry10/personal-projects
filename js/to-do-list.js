@@ -49,9 +49,9 @@ $(document).ready(() => {
                                     <h5>${element.task}</h5>
                                     ${completed}
                                 </div>
-                                <button data-id="${element.id}" data-action="edit">Edit</button>
-                                <button data-id="${element.id}" data-action="delete">Delete</button>
-                                <button data-id="${element.id}" data-action="complete">Complete</button>
+                                <button data-id="${element.id}" data-action="edit" class="btn btn-outline-info my-2 my-sm-0">Edit</button>
+                                <button data-id="${element.id}" data-action="delete" class="btn btn-outline-info my-2 my-sm-0">Delete</button>
+                                <button data-id="${element.id}" data-action="complete" class="btn btn-outline-info my-2 my-sm-0">Complete</button>
                             </div>
                         </div>
                     `);
