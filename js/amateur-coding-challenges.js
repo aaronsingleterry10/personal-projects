@@ -46,20 +46,24 @@
     let num = 0;
     // console.log(input)
     // console.log(input["a"]);
-    input.reduce((wordCounts, word) => {
-        if (typeof wordCounts[word] === 'undefined') {
-            console.log(wordCounts);
-            console.log("word: " + word);
-            wordCounts[word] = 1;
-            console.log(wordCounts[word])
-        } else {
-            console.log("wordCounts: " + wordCounts);
-            console.log("word: " + word);
-            wordCounts[word] += 1;
-            console.log(wordCounts[word])
-        }
-        return wordCounts;
-    }, []);
+    console.log()
+    // let results = input.reduce((wordCounts, word) => {
+    //     if (typeof wordCounts[word] === 'undefined') {
+            // console.log(wordCounts);
+            // console.log("word: " + word);
+            // console.log(wordCounts[word]);
+            // wordCounts[word] = 1;
+            // console.log(wordCounts[word])
+        // } else {
+            // console.log("wordCounts: " + wordCounts);
+            // console.log("word: " + word);
+            // console.log(wordCounts[word]);
+            // wordCounts[word] += 1;
+            // console.log(wordCounts[word])
+        // }
+        // return wordCounts;
+    // }, "");
+    // console.log(results);
     // for (let i = 0; i < myString.length; i++) {
     //     console.log(myString.indexOf(myString[i]));
         // if (myString[i] === singleChar) {
