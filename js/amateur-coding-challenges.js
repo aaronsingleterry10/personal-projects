@@ -12,4 +12,13 @@
     console.log(startFinishStep(3, 7, 2));
     console.log(startFinishStep(1, 4, 2));
 
+    function hasEnglish(input) {
+        let userInput = input.toLowerCase();
+        let word = "english";
+        return userInput.indexOf(word) > 0;
+    }
+    console.log(hasEnglish("SMFENgliSHasnD"));
+    console.log(hasEnglish("FaagdnglishAGG"));
+
+
 })();
