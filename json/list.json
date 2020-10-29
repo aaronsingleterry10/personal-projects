@@ -1,18 +1,6 @@
 {
   "todo": [
     {
-      "date": "2020-10-22T05:00:00.000Z",
-      "task": "Mop floor",
-      "isComplete": true,
-      "id": 14
-    },
-    {
-      "date": "2020-10-22T05:00:00.000Z",
-      "task": "Walk Dog",
-      "isComplete": true,
-      "id": 16
-    },
-    {
       "date": "2020-10-30T05:00:00.000Z",
       "task": "Clean dishes",
       "isComplete": true,
@@ -21,8 +9,14 @@
     {
       "date": "2020-10-31T05:00:00.000Z",
       "task": "Clean the garage",
-      "isComplete": false,
+      "isComplete": true,
       "id": 18
+    },
+    {
+      "date": "2020-10-30T05:00:00.000Z",
+      "task": "Walk the dog",
+      "isComplete": true,
+      "id": 19
     }
   ]
 }
