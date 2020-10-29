@@ -34,6 +34,39 @@
         newArray.push(sumOfPosNums, sumOfNegNums);
         return newArray;
     }
-    let myArr = [1, -6, 5, 4, 3, -7, -10, 201, -3];
-    console.log(twoArrayTwoInts(myArr));
+    // let myArr = [1, -6, 5, 4, 3, -7, -10, 201, -3];
+    // console.log(twoArrayTwoInts(myArr));
+
+    function translateToNum(input) {
+
+    }
+    let myString = "challenge";
+    let singleChar = myString[0];
+    let input = myString.split("");
+    let num = 0;
+    // console.log(input)
+    // console.log(input["a"]);
+    input.reduce((wordCounts, word) => {
+        if (typeof wordCounts[word] === 'undefined') {
+            console.log(wordCounts);
+            console.log("word: " + word);
+            wordCounts[word] = 1;
+            console.log(wordCounts[word])
+        } else {
+            console.log("wordCounts: " + wordCounts);
+            console.log("word: " + word);
+            wordCounts[word] += 1;
+            console.log(wordCounts[word])
+        }
+        return wordCounts;
+    }, []);
+    // for (let i = 0; i < myString.length; i++) {
+    //     console.log(myString.indexOf(myString[i]));
+        // if (myString[i] === singleChar) {
+        //     num += 1;
+        // } else {
+        //     singleChar = myString[i];
+        // }
+        // console.log(num);
+    // }
 })();
