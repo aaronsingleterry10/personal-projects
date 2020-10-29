@@ -9,5 +9,7 @@
     }
     console.log(startFinishStep(1, 4, 1));
     console.log(startFinishStep(4, 10));
+    console.log(startFinishStep(3, 7, 2));
+    console.log(startFinishStep(1, 4, 2));
 
 })();
