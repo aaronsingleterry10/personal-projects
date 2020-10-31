@@ -64,13 +64,4 @@
         return wordCounts;
     }, []);
     console.log(results);
-    // for (let i = 0; i < myString.length; i++) {
-    //     console.log(myString.indexOf(myString[i]));
-        // if (myString[i] === singleChar) {
-        //     num += 1;
-        // } else {
-        //     singleChar = myString[i];
-        // }
-        // console.log(num);
-    // }
 })();
