@@ -52,5 +52,31 @@
 -- JOIN [Person] ON [GroupMember].PersonId = [Person].Id
 -- left JOIN [PhoneNumber] ON [PhoneNumber].PersonId = [Person].Id
 -- WHERE [Group].Name = 'Marble Family' OR [Group].Name = 'Lowe Family';
+
+
+<!-- first coding assessment with but added clickable links for first/last name-->
+{% person where:'LastName == "Gilbert" || LastName == "Decker" || LastName == "Marble"' %}
+{% for person in personItems %}
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row no-gutters">
+        <div class="col-md-4">
+            <img src={{person.PhotoUrl}} class="card-img" alt={{person.FullName}}>
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <a href="https://rock.rocksolidchurchdemo.com/Person/{{person.Id}}" target="_blank">
+                    <h5 class="card-title">Name: {{person.NickName}} {{person.LastName}}</h5>
+                </a>
+                {% if person.FavoriteColor == ''%}
+                <p class="card-text">Favorite Color: {{person.NickName}} has not entered their favorite color.</p>
+                {% else %}
+                <p class="card-text">Favorite Color: {{person.FavoriteColor}}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endperson %}
 </body>
 </html>
