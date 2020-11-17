@@ -78,5 +78,34 @@
 </div>
 {% endfor %}
 {% endperson %}
+
+<!-- this is just for playing around with lava and rock -->
+{% person where:'LastName == "Decker"' %}
+{% for person in personItems %}
+{% assign number = person | PhoneNumber:"Home"%}
+{% assign parents = person | Parents %}
+{% assign baptismDate = person | Attribute:"BaptismDate" %}
+<div class="card mb-3" style="width: 18rem;">
+    <img src="{{person.PhotoUrl}}" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">{{person.NickName}} {{person.LastName}}</h5>
+        <p class="card-text">
+            {% if number != null %}
+            Phone: {{person | PhoneNumber:'Mobile'}}<br>
+            {% else %}
+            Parents:
+            {% for parent in parents %}
+            {{parent.NickName}} {{parent.LastName}}<br>
+            {% endfor %}
+            {% endif %}
+            {% if baptismDate != "" %}
+            Baptism Date: {{baptismDate}}
+            {% endif %}
+        </p>
+        <a href="https://rock.rocksolidchurchdemo.com/Person/{{person.Id}}" class="btn btn-primary" target="_blank">Visit Profile</a>
+    </div>
+</div>
+{% endfor %}
+{% endperson %}
 </body>
 </html>
