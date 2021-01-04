@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Practice</title>
+</head>
+<body>
+<script>
+
+    function getLetter(s) {
+        let letter;
+        // Write your code here
+        let firstLetter = s.charAt(0);
+        console.log(firstLetter);
+        switch(firstLetter) {
+            case "a":
+                letter = "A";
+                break;
+            case "b":
+                letter = "B";
+                break;
+            case "h":
+                letter = "C";
+                break;
+            case "n":
+                letter = "D";
+                break;
+        }
+        return letter;
+    }
+
+    console.log(getLetter("adfgt"));
+</script>
+</body>
+</html>
