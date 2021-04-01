@@ -1,3 +1,13 @@
 * {
     box-sizing: border-box;
 }
+
+img {
+    /*width: 40% !important;*/
+    /*height: 40% !important;*/
+    object-fit: fill !important;
+}
+
+.c-card {
+    text-align: center;
+}
