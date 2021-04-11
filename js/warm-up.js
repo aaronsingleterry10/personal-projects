@@ -15,42 +15,44 @@
                         let image = data.sprites.front_default;
                         let name = data.name;
                         let capName = name.charAt(0).toUpperCase() + name.slice(1);
-                        // console.log(data.sprites.front_default)
+                        let pokeId = data.id;
                         let lastItemInArray = data.types[data.types.length - 1];
                         let types = "";
                         for (let i in data.types) {
+                            let move = data.types[i].type.name;
                             if (data.types.length > 0) {
                                 if (data.types.indexOf(data.types[i]) === data.types.indexOf(lastItemInArray)) {
-                                    types += data.types[i].type.name;
+                                    types += (move.charAt(0).toUpperCase() + move.slice(1));
                                 } else {
-                                    types += data.types[i].type.name + ", ";
+                                    types += move.charAt(0).toUpperCase() + move.slice(1) + ", ";
                                 }
                             }
                         }
-                        console.log(data.types.length)
                         document.getElementById("pokemon").innerHTML +=
                             `
-                                <div class="col">
+                                <div class="col" id="${pokeId}">
                                     <div class="card">
                                         <div class="c-card"><img src="${image}" class="card-img-top" alt="..."></div>
-                                        <div class="card-body">
+                                        <div class="card-body centered">
                                             <h5 class="card-title">${capName}</h5>
-                                            <p class="card-text">
+                                           <!-- <p class="card-text">
                                                 Types: ${types}
-                                            </p>
+                                            </p> -->
                                         </div>
                                     </div>
-                                </div> 
+                                </div>   
                             `
-                        // `<div> ${data.name} </div>`
-                        // for (let i in data) {
-                        //     console.log(data[i])
-                        // }
-                    })
+                        document.getElementById(`${pokeId}`).addEventListener("click", () => {
+                            console.log(name, pokeId)
+                            document.getElementById("pokeModal").innerHTML =
+                                `
+                                    <div class="modal-dialog modal-dialog-centered">
+                                      ...
+                                    </div>
+                                `
+                        });
+                    }).then();
             }
-            // for (let x = 0; x < pokemon.results.length; x++) {
-            //     console.log(p)
-            // }
-        })
+        });
 
 })();
