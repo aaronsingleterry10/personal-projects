@@ -12,6 +12,11 @@ code {
     monospace;
 }
 
+img {
+  height: 30px;
+  width: 30px;
+}
+
 .c-input {
   width: 50% !important;
   display: flex;
@@ -23,3 +28,13 @@ code {
   display: flex !important;
   justify-content: space-between;
 }
+
+.c-img {
+  display: flex;
+
+}
+
+.c-button-price {
+
+}
+
